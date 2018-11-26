@@ -43,7 +43,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int _counter = 1;
 
   void _incrementCounter() {
     setState(() {
@@ -52,8 +52,25 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      _counter += _counter;
     });
+  }
+
+  void _jumpToNames(){
+    Navigator.of(context).push(
+      new MaterialPageRoute<void>(
+          builder: (BuildContext context){
+            return new Scaffold(
+              appBar: new AppBar(
+                title: new Text("Names Route"),
+              ),
+              body: new Center(
+                child: new Text('New Route'),
+              ),
+            );
+          }
+      )
+    );
   }
 
   @override
@@ -69,6 +86,9 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: new Text(widget.title),
+        actions: <Widget>[//add a icon on the Appbar,jump to next route
+          new IconButton(icon: const Icon(Icons.arrow_forward), onPressed: _jumpToNames),
+        ],
       ),
       body: new Center(
         // Center is a layout widget. It takes a single child and positions it
