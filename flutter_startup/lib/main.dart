@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _jumpToNames(){
     Navigator.of(context).push(
-      new MaterialPageRoute<void>(
+      new MaterialPageRoute<void>(//how to build a customized route.
           builder: (BuildContext context){
             return new Scaffold(
               appBar: new AppBar(
